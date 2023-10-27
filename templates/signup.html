@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Sign Up</h1>
+<div class="signup">
+<form method="POST" action="{{ url_for('signup') }}">
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required>
+    <br>
+    <label for = "password">Password:</label>
+    <input type="password" name="password" id="password" required>
+    <br>
+    <label for="firstname">First Name:</label>
+    <input type="text" name="firstname" id="firstname" required>
+    <br>
+    <label for="lastname">Last Name:</label>
+    <input type="text" name="lastname" id="lastname" required>
+    <br>
+    <label for="contact_no">Contact Number:</label>
+    <input type="text" name="contact_no" id="contact_no" required>
+    <br>
+    <button type="submit">Sign Up</button>
+</form>
+    </div>
+
+<div id="signup-success-message" style="display: none;">
+    Account created successfully!
+</div>
+
+
+{% endblock %}

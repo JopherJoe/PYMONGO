@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Main</title>
+{% endblock %}
+
+{% block body %}
+<a href="{{ url_for('logout') }}"><button>Logout</button></a>
+<h1>This is the main</h1>
+{% if user_firstname %}
+    <p>Welcome, {{ user_firstname }}!</p>
+{% else %}
+    <p>Welcome to the main page.</p>
+{% endif %}
+
+<form method="POST" action="{{ url_for('records') }}">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required>
+    <br>
+    <label for="lastname">Last Name:</label>
+    <input type="text" name="lastname" id="lastname" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required>
+    <br>
+    <button type="submit" name="add">Add Record</button>
+</form>
+
+<div>
+<h2>Records</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>LastName</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+                <tr>
+                    <td>{{ record.name }}</td>
+                    <td>{{ record.lastname }}</td>
+                    <td>{{ record.email }}</td>
+                     <td>
+                    <form action="{{ url_for('update_record') }}" method="POST">
+                        <input type="hidden" name="update_id" value="{{ record._id }}">
+                        <input type="text" name="update_name" placeholder="New Name">
+                        <input type="text" name="update_lastname" placeholder="New Lastname">
+                        <input type="text" name="update_email" placeholder="New Email">
+                        <button type="submit">Update</button>
+                    </form>
+                         <form action="{{ url_for('delete_record') }}" method="POST">
+                        <input type="hidden" name="delete_id" value="{{ record._id }}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
