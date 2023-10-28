@@ -5,7 +5,7 @@ from bson import ObjectId
 import jwt
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 app.secret_key = 'jopher123456'
 
 client = MongoClient("mongodb+srv://josiriboup:YeFfiKAjkGHJyKar@cluster0.71gaxnl.mongodb.net/?retryWrites=true&w=majority")

@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block body %}
-<h1>This is the Login</h1>
-<form method="POST" action="{{ url_for('login') }}">
+<h1 class = 'log'>This is the Login</h1>
+<form method="POST" action="{{ url_for('login') }}" class="log-email">
     <label for="email">Email:</label>
     <input type="email" name="email" id="email" required>
     <br>
