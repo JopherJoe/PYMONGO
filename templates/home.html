@@ -5,9 +5,18 @@
     {% endblock %}
 
 {% block body %}
-<h1>This is the Homepage</h1>
-<a href = "{{url_for('signup', _external=True)}}"> <button>Register</button> </a>
-<a href = "{{ url_for ('login', _external=True)}}"><button>Login</button></a>
-<h1>Shesh I love Python except for flask_mysqldb</h1>
+<div class = "full">
+<h1 class = 'home'>Home Flask</h1>
+
+<div class = "button-container">
+<a href = "{{url_for('signup', _external=True)}}" class = register>
+    <button>Register</button>
+</a>
+<a href = "{{ url_for ('login', _external=True)}}" class = login>
+    <button>Login</button>
+</a>
+    </div>
+    </div>
+
 
 {% endblock %}
